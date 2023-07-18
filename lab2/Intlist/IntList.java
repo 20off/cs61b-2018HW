@@ -85,7 +85,7 @@ public class IntList {
 
         if( A.rest==null) {
             A.rest=B;
-            return null;
+            return A;
         }IntList.dcatenate(A.rest,B);
         return A;
     }
