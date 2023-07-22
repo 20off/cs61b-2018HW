@@ -1,5 +1,5 @@
 public class Planet{
-	public double G=6.67e-11;
+	private double G=6.67e-11;
 	public double xxPos;
 	public double yyPos;
 	public double xxVel;
@@ -12,7 +12,7 @@ public class Planet{
 		xxVel=xV;
 		yyVel=yV;
 		mass=m;
-		imgFileName="images/"+img;		
+		imgFileName=img;		
 	}
 	public Planet(Planet p){
 		xxPos=p.xxPos;

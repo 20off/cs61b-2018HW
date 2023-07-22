@@ -16,14 +16,14 @@ public class NBody{
 		}
 		return ap;
 	}
-	public static void drawBackGround(double R){
+	private static void drawBackGround(double R){
 		String image="images/starfield.jpg";
 		StdDraw.setScale(-R,R);
 		StdDraw.clear();
 		StdDraw.picture(0,0, image);
 		StdDraw.show();
 	}
-	public static void DrawAllPlanets(Planet[] allp){
+	private static void DrawAllPlanets(Planet[] allp){
 		for(Planet p: allp){
 			p.draw();
 		}
