@@ -1,12 +1,12 @@
-public class LinkedListDeque<hhh> {
+public class LinkedListDeque<T> {
     /*class T is innode which is a naked list
     * has two pionters
     * */
-    private class T{
-        public hhh item;
-            public T next;
-            public T pre;
-            public T(hhh x, T p, T n){
+    private class innode{
+        public T item;
+            public innode next;
+            public innode pre;
+            public innode(T x, innode p, innode n){
                 item=x;
                 next=n;
                 pre=p;
@@ -14,12 +14,12 @@ public class LinkedListDeque<hhh> {
             /*null constructor,if LinkedlistDeque is consturcted as null list
             we make sentinel point a null naked list innode
             * */
-            public T(){
+            public innode(){
                 item=null;
                 next=null;
                 pre=null;
             }
-            public hhh get(int index){
+            public T get(int index){
                 if(index==0) {
                     return item;
                 }
@@ -28,14 +28,14 @@ public class LinkedListDeque<hhh> {
     }
     /*sentinel must piont to a list
     * */
-    private T sentinel=new T();
+    private innode sentinel=new innode();
     private int size;
     /*sentinel's pre point to the last item of the list
     sentinel's next point to the first item of the list
     sentinel's item doesn't make sense. It also an be anything
     * */
-    public LinkedListDeque(hhh x){
-        sentinel.next=new T(x, sentinel, sentinel);
+    public LinkedListDeque(T x){
+        sentinel.next=new innode(x, sentinel, sentinel);
         sentinel.pre=sentinel.next;
         size=1;
     }
@@ -44,15 +44,15 @@ public class LinkedListDeque<hhh> {
         sentinel.pre=sentinel;
         size=0;
     }
-    public void addFirst(hhh item){
-        sentinel.next=new T(item, sentinel, sentinel.next);
+    public void addFirst(T item){
+        sentinel.next=new innode(item, sentinel, sentinel.next);
         sentinel.next.next.pre=sentinel.next;
         size+=1;
     }
 
 
-    public void addLast(hhh item){
-        sentinel.pre=new T(item, sentinel.pre , sentinel);
+    public void addLast(T item){
+        sentinel.pre=new innode(item, sentinel.pre , sentinel);
         sentinel.pre.pre.next=sentinel.pre;
         size+=1;
     }
@@ -66,7 +66,7 @@ public class LinkedListDeque<hhh> {
         return size;
     }
     public void printDeque(){
-        T l=sentinel.next;
+        innode l=sentinel.next;
         for(int i=0; i<size; i+=1){
             if(i==size-1){
                 System.out.print(l.item);
@@ -77,8 +77,8 @@ public class LinkedListDeque<hhh> {
             l=l.next;
         }
     }
-    public hhh removeFirst(){
-        hhh u;
+    public T removeFirst(){
+        T u;
         if(size==0){
             return null;
         }
@@ -90,8 +90,8 @@ public class LinkedListDeque<hhh> {
         size=size-1;
         return u;
     }
-    public hhh removeLast(){
-        hhh u;
+    public T removeLast(){
+        T u;
         if(size==0){
             return null;
         }
@@ -103,18 +103,18 @@ public class LinkedListDeque<hhh> {
         size=size-1;
         return u;
     }
-    public hhh get(int index){
+    public T get(int index){
         if(index>=size){
             return null;
         }else {
-            T p=sentinel;
+            innode p=sentinel;
             for(int i=0; i<=index; i+=1){
                 p=p.next;
             }
             return p.item;
         }
     }
-    public hhh getRecursive(int index){
+    public T getRecursive(int index){
 
         return this.sentinel.next.get(index);
     }

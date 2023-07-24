@@ -1,5 +1,5 @@
-public class ArrayDeque<hhh> {
-    private hhh[] arr;
+public class ArrayDeque<T> {
+    private T[] arr;
     private int size;
     private int front;
     private int last;
@@ -9,13 +9,13 @@ public class ArrayDeque<hhh> {
 
     public ArrayDeque(){
         last=0;
-        arr=(hhh[]) new Object[8];
+        arr=(T[]) new Object[8];
         front=arr.length-1;
         size=0;
     }
     private void Resizing(){
         if(size==arr.length){
-            hhh[] b=(hhh[]) new Object[size*2];
+            T[] b=(T[]) new Object[size*2];
             System.arraycopy(arr, last, b, 0, size-last);
             System.arraycopy(arr, 0, b, size-last, last);
             front=b.length-1;
@@ -23,7 +23,7 @@ public class ArrayDeque<hhh> {
             arr=b;
         }
         if(arr.length>15 & size<(arr.length/4)){
-            hhh[] b=(hhh[]) new Object[arr.length/2];
+            T[] b=(T[]) new Object[arr.length/2];
             if(front<last){
                 System.arraycopy(arr, front+1, b, 0, last-front);
             }else if(front>last){
@@ -36,7 +36,7 @@ public class ArrayDeque<hhh> {
             }
     }
     //transform front and last ,so that they are all valid
-    private int T(int x){
+    private int Tt(int x){
         if(x<0){
             x+=arr.length;
 
@@ -45,20 +45,20 @@ public class ArrayDeque<hhh> {
         }
         return x;
     }
-    public void addFirst(hhh item){
+    public void addFirst(T item){
         this.Resizing();
          arr[front]=item;
-         front=this.T(front-1);
+         front=this.Tt(front-1);
          size+=1;
     }
-    public void addLast(hhh item){
+    public void addLast(T item){
         this.Resizing();
         arr[last]=item;
-        last=this.T(last+1);
+        last=this.Tt(last+1);
         size+=1;
     }
     public boolean isEmpty(){
-        if(size==0){git
+        if(size==0){
             return true;
         }
         return false;
@@ -68,8 +68,8 @@ public class ArrayDeque<hhh> {
     }
     public void printDeque(){
         int h;
-        for(int i=this.T(front+1); i<size+this.T(front+1); i++){
-            h=this.T(i);
+        for(int i=this.Tt(front+1); i<size+this.Tt(front+1); i++){
+            h=this.Tt(i);
             if(h==last-1){
                 System.out.print(arr[h]);
                 break;
@@ -77,32 +77,32 @@ public class ArrayDeque<hhh> {
             System.out.print(arr[h]+" ");
         }
     }
-    public hhh removeFirst(){
+    public T removeFirst(){
         if(this.isEmpty()){
             return null;
         }
-        int h=this.T(front+1);
-        hhh b=arr[h];
+        int h=this.Tt(front+1);
+        T b=arr[h];
         arr[h]=null;
         front=h;
         size-=1;
         this.Resizing();
         return b;
     }
-    public hhh removeLast(){
+    public T removeLast(){
         if(this.isEmpty()){
             return null;
         }
-        int h=this.T(last-1);
-        hhh b=arr[h];
+        int h=this.Tt(last-1);
+        T b=arr[h];
         arr[h]=null;
         last=h;
         size-=1;
         this.Resizing();
         return b;
     }
-    public hhh get(int index){
-        int h=this.T(front+1+index);
+    public T get(int index){
+        int h=this.Tt(front+1+index);
         return arr[h];
     }
 }
