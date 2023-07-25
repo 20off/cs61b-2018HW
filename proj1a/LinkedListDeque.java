@@ -34,11 +34,6 @@ public class LinkedListDeque<T> {
     sentinel's next point to the first item of the list
     sentinel's item doesn't make sense. It also an be anything
     * */
-    public LinkedListDeque(T x){
-        sentinel.next=new innode(x, sentinel, sentinel);
-        sentinel.pre=sentinel.next;
-        size=1;
-    }
     public LinkedListDeque(){
         sentinel.next=sentinel;
         sentinel.pre=sentinel;
@@ -83,10 +78,12 @@ public class LinkedListDeque<T> {
             return null;
         }
         u=sentinel.next.item;
+        innode h=sentinel.next;
         sentinel.next=sentinel.next.next;
-        if(size==1){
-            sentinel.pre=sentinel;
-        }
+        sentinel.next.pre=sentinel;
+        h.pre=null;
+        h.next=null;
+        h.item=null;
         size=size-1;
         return u;
     }
@@ -96,10 +93,12 @@ public class LinkedListDeque<T> {
             return null;
         }
         u=sentinel.pre.item;
+        innode h=sentinel.pre;
         sentinel.pre=sentinel.pre.pre;
-        if(size==1){
-            sentinel.next=sentinel;
-        }
+        sentinel.pre.next=sentinel;
+        h.pre=null;
+        h.next=null;
+        h.item=null;
         size=size-1;
         return u;
     }
