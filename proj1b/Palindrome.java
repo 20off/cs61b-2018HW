@@ -22,7 +22,7 @@ public class Palindrome {
         Deque<Character> a=wordToDeque(word);
         return helperisPalindrome(a);
     }
-    public boolean helperisPoffbyone(Deque<Character> a, CharacterComparator cc){
+    private boolean helperisPoffbyone(Deque<Character> a, CharacterComparator cc){
         if(a.isEmpty() | a.size()==1){
             return true;
         }
