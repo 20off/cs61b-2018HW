@@ -101,8 +101,8 @@ public class WorldGenerator {
                     return true;
                 }
             }else if(i < Ra[index].width - 2 + Ra[index].height - 2){
-                if(world[x + Ra[index].width - 1 ][y + i - Ra[index].width - 2 + 1].equals(Tileset.WALL)){
-                    world[x + Ra[index].width - 1 ][y + i - Ra[index].width - 2 + 1] = Tileset.LOCKED_DOOR;
+                if(world[x + Ra[index].width - 1 ][y + i - (Ra[index].width - 2) + 1].equals(Tileset.WALL)){
+                    world[x + Ra[index].width - 1 ][y + i - (Ra[index].width - 2) + 1] = Tileset.LOCKED_DOOR;
                     return true;
                 }
             }else if(i < 2 * Ra[index].width - 4 + Ra[index].height - 2){
@@ -111,8 +111,8 @@ public class WorldGenerator {
                     return true;
                 }
             }else{
-                if(world[x][y + 1 + i - l -Ra[index].width - 2].equals(Tileset.WALL)){
-                    world[x][y + 1 + i - l -Ra[index].width - 2] = Tileset.LOCKED_DOOR;
+                if(world[x][y + 1 + i - l -Ra[index].width + 2].equals(Tileset.WALL)){
+                    world[x][y + 1 + i - l -Ra[index].width + 2] = Tileset.LOCKED_DOOR;
                     return true;
                 }
             }
