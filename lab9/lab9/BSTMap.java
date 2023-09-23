@@ -130,7 +130,11 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         if(p.right == null){
             return p;
         }
-        return chooseNewRoot(p.right);
+        Node p2 = chooseNewRoot(p.right);
+        if(p.right == p2){
+            p.right = p2.left;
+        }
+        return p2;
     }
     private Node removehelper(K key, Node p, V[] a){
         if(p == null){
