@@ -13,6 +13,7 @@ public class PercolationStats {
             throw new IllegalArgumentException();
         }
         pofPercplate = new double[T];
+        Percolation p = pf.make(N);
         for(int i = 0; i < T; i += 1){
             int index = 0;
             int l = N*N ;
@@ -20,7 +21,6 @@ public class PercolationStats {
             for( int j = 0; j < l; j += 1 ){
                 blockbox[j] = j;
             }
-            Percolation p = pf.make(N);
             while(!p.percolates()){
                 index = StdRandom.uniform(l);
                 p.open(blockbox[index]/5,blockbox[index]%5);

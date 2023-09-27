@@ -11,6 +11,7 @@ public class Percolation {
     public WeightedQuickUnionUF DS;  //设置root为-1，视为水源，处在地图外的最上方
     public WeightedQuickUnionUF DSf;
     public int l;
+    public int size;
     public Percolation(int N){
         // create N-by-N grid, with all sites initially blocked
         l = N;
@@ -21,6 +22,7 @@ public class Percolation {
         DS = new WeightedQuickUnionUF(N*N + 2);
         DSf = new WeightedQuickUnionUF(N*N + 1);
         clear();
+        size = 0;
     }
     //初始化grid 和disjoint set
     private void clear() {
@@ -58,8 +60,12 @@ public class Percolation {
         if(row < 0 || row > grid.length-1 || col < 0 || col > grid.length-1){
             throw new IndexOutOfBoundsException();
         }
-        grid[row][col] = true;
-        unionfullsite(row,col);
+        if(!grid[row][col]){
+            grid[row][col] = true;
+            unionfullsite(row,col);
+            size += 1;
+        }
+
     }
     public boolean isOpen(int row, int col){
         // is the site (row, col) open?
@@ -77,7 +83,7 @@ public class Percolation {
     }
     public int numberOfOpenSites(){
         // number of open sites
-        return l*l - DS.count() + 2;
+        return size;
     }
     public boolean percolates()     {
         // does the system percolate?
