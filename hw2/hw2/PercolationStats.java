@@ -23,7 +23,7 @@ public class PercolationStats {
             }
             while(!p.percolates()){
                 index = StdRandom.uniform(l);
-                p.open(blockbox[index]/5,blockbox[index]%5);
+                p.open(blockbox[index]/N,blockbox[index]%N);
                 blockbox[index] = blockbox[l];
                 l = l - 1;
             }
