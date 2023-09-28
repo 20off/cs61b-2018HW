@@ -209,9 +209,12 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         for(int i = 1; i <= size; i += 1 ){
             if(contents[i].myItem.equals(item)){
                 contents[i].myPriority = priority;
+                swim(i);
+                sink(i);
                 break;
             }
         }
+
         return;
     }
 
@@ -443,6 +446,15 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
             assertEquals(expected[i], pq.removeMin());
             i += 1;
         }
+    }
+    @Test
+    public void TestChangePriority(){
+        ArrayHeap<String> pq = new ArrayHeap<>();
+        pq.insert("a",10);
+        pq.insert("c",2);
+        pq.insert("h",3);
+        pq.changePriority("c",7);
+        assertEquals("c",pq.contents[3].myItem);
     }
 
 }
