@@ -12,7 +12,10 @@ public class PercolationStats {
             throw new IllegalArgumentException();
         }
         pofPercplate = new double[T];
-        Percolation p = pf.make(N);
+        Percolation[] p = new Percolation[T];
+        for(int i = 0; i < T; i += 1){
+            p[i] = pf.make(N);
+        }
         for(int i = 0; i < T; i += 1){
             int index;
             int l = N*N ;
@@ -20,13 +23,13 @@ public class PercolationStats {
             for( int j = 0; j < l; j += 1 ){
                 blockbox[j] = j;
             }
-            while(!p.percolates()){
+            while(!p[i].percolates()){
                 index = StdRandom.uniform(l);
-                p.open(blockbox[index]/N,blockbox[index]%N);
+                p[i].open(blockbox[index]/N,blockbox[index]%N);
                 blockbox[index] = blockbox[l-1];
                 l = l - 1;
             }
-            pofPercplate[i] = p.numberOfOpenSites()*1.0/N*N;
+            pofPercplate[i] = p[i].numberOfOpenSites()*1.0/(N*N);
         }
     }
     // sample mean of percolation threshold

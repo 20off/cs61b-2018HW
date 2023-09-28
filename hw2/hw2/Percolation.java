@@ -7,11 +7,11 @@ import static org.junit.Assert.*;
 import java.lang.IllegalArgumentException;
 
 public class Percolation {
-    public Boolean[][] grid;
-    public WeightedQuickUnionUF DS;  //设置root为-1，视为水源，处在地图外的最上方
-    public WeightedQuickUnionUF DSf;
-    public int l;
-    public int size;
+    private Boolean[][] grid;
+    private WeightedQuickUnionUF DS;  //设置root为-1，视为水源，处在地图外的最上方
+    private WeightedQuickUnionUF DSf;
+    private int l;
+    private int size;
     public Percolation(int N){
         // create N-by-N grid, with all sites initially blocked
         l = N;
