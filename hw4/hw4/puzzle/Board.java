@@ -78,9 +78,9 @@ public class Board implements WorldState {
                     continue;
                 }
                 if((b[i][j] -1) / size() != i){
-                    distance += 1;
+                    distance += Math.abs((b[i][j] -1) / size() - i);
                 }if((b[i][j]-1) % size() != j){
-                    distance += 1;
+                    distance += Math.abs((b[i][j] -1) % size() - i);
                 }
             }
         }
@@ -90,6 +90,10 @@ public class Board implements WorldState {
         return manhattan();
     }
     public boolean equals(Object y){
+        if(y instanceof String){
+            String a = this.toString();
+            return a.equals(y);
+        }
         Board target = (Board) y;
         if( target.size()!= this.size()){
             return false;
