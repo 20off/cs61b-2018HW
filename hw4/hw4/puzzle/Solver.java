@@ -28,11 +28,17 @@ public class Solver {
                      pq.insert(a);
                  }
              }
-        }
+        }LinkedList<WorldState> sl = new LinkedList<>();
         while(i.pre!=null){
-            slo.add(i.wo);
+            sl.add(i.wo);
             i=i.pre;
-        }slo.add(i.wo);
+        }
+        sl.add(i.wo);
+        WorldState x;
+        while(!sl.isEmpty()){
+            x = sl.removeLast();
+            slo.add(x);
+        }
     }
 
     public int moves() {
