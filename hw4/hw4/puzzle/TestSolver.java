@@ -62,7 +62,7 @@ public class TestSolver {
         }
     }
 
-/* Uncomment once you've written Solver.
+
     @Test(timeout = 10000)
     public void testWordPuzzles() {
         In in = new In("input/word_puzzles.txt");
@@ -75,13 +75,19 @@ public class TestSolver {
             Solver s = new Solver(w);
             String errorMessage = "Wrong number of moves solving "
                                   + wps.start + "->" + wps.goal;
-
+            System.out.print(wps.numMoves);
+            System.out.print(s.moves());
             assertEquals(errorMessage, wps.numMoves, s.moves());
         }
     }
- */
+    @Test
+    public void mytest(){
+        Word x = new Word("cube","tubes");
 
- /* Uncomment everything in this block once you've written Board.
+    }
+
+
+
      public static Board readBoard(String filename) {
         In in = new In(filename);
         int N = in.readInt();
@@ -145,5 +151,5 @@ public class TestSolver {
             Solver s = new Solver(b);
             assertEquals("Wrong number of moves on " + puzzleName, bps.numMoves, s.moves());
         }
-    }*/
+    }
 }
