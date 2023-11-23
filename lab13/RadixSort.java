@@ -17,7 +17,48 @@ public class RadixSort {
      */
     public static String[] sort(String[] asciis) {
         // TODO: Implement LSD Sort
-        return null;
+        int[] arcount;
+        int[] arrstarts = new int[256];
+        int max = 0;
+        for(String x : asciis){
+            if(x.length() > max){
+                max = x.length();
+            }
+        }int leng = asciis.length;
+        String[] output = new String[leng];
+        for(int i = 0; i < leng; i++){
+            output[i] = asciis[i];
+        }
+        char b;
+        for(int i = 0; i < max; i++){
+            String[] input = new String[leng];
+            arcount = new int[256];
+            for(String x : output){
+                if(x.length()- i - 1 < 0){
+                    arcount[0]++;
+                }else{
+                    b = x.charAt(x.length()- i - 1);
+                    arcount[b]++;
+                }
+            }
+            int pos = 0;
+            for(int j = 0 ; j < 256; j++){
+                arrstarts[j] = pos;
+                pos = pos + arcount[j];
+            }
+            for(String x : output){
+                if(x.length()- i - 1 < 0){
+                    input[arrstarts[0]] = x;
+                    arrstarts[0]++;
+                }else{
+                    b = x.charAt(x.length()- i - 1);
+                    input[arrstarts[b]] = x;
+                    arrstarts[b]++;
+                }
+            }output = input;
+        }
+
+        return output;
     }
 
     /**
@@ -27,7 +68,7 @@ public class RadixSort {
      * @param index The position to sort the Strings on.
      */
     private static void sortHelperLSD(String[] asciis, int index) {
-        // Optional LSD helper method for required LSD radix sort
+        // Optional LSD helper method for required LSD radix sort\
         return;
     }
 
