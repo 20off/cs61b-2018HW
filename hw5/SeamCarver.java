@@ -10,7 +10,7 @@ public class SeamCarver {
     private int height;
     private boolean isVertical;
     public SeamCarver(Picture picture){
-        p = picture;
+        p = new Picture(picture);
         width = p.width();
         height = p.height();
         isVertical = true;
